@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header class="headerPrincipal">
+        <span class="shopApiLabel">SHOP API</span>
+        <h1>Detalle del producto</h1>
+    </header>
+
+    <main class="mainDetalleMain">
+        <div class="volverContenedor">
+            <a href="index.html" class="enlaceVolver">← Volver al catálogo</a>
+        </div>
+
+        <div class="detalleCard" id="detalleCard">
+            <!-- El contenido detallado se cargará dinámicamente con JavaScript -->
+        </div>
+    </main>
+
+    <!-- Scripts en orden correcto -->
+    <script src="js/script.js"></script>
+    <script src="js/apiProductos.js"></script>
+    <script>
+        const parametros = new URLSearchParams(window.location.search);
+        const idProducto = parametros.get('id');
+        if (idProducto) {
+            extraerDatosProducto(idProducto);
+        } else {
+            document.getElementById('detalleCard').innerHTML = '<p class="errorMensaje">No se ha especificado un producto válido.</p>';
+        }
+    </script>
+</body>
+</html>
